@@ -11,6 +11,8 @@ namespace SpaceShooter.Scene.MainMenu.LeaderBoard
         {
             SetView(view);
             Publish(new AskSaveDataMessage(ShowLeaderBoard));
+            DataPlayer player = new DataPlayer("Player2", 100);
+            Publish(new ComparePlayerMessage(player));
         }
 
         private void ShowLeaderBoard(DataPlayer[] data)

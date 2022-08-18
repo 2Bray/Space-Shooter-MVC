@@ -16,7 +16,7 @@ namespace SpaceShooter.SaveData
         public void SaveToStorage()
         {
             string json = JsonUtility.ToJson(new AllDataPlayer(_model.DataPlayer));
-            string pathI = Application.persistentDataPath+"/DataSpaceShooter";
+            string pathI = "C:/DataSpaceShooter";
             if (!Directory.Exists(pathI)) {
                 Directory.CreateDirectory(pathI);
             }
@@ -26,7 +26,7 @@ namespace SpaceShooter.SaveData
 
         public void LoadFromStorage()
         {
-            string pathI = Application.persistentDataPath+"/DataSpaceShooter/DataLeaderBoard.json";
+            string pathI = "C:/DataSpaceShooter/DataLeaderBoard.json";
             AllDataPlayer data;
             if (File.Exists(pathI))
             {
@@ -67,6 +67,12 @@ namespace SpaceShooter.SaveData
                             AddPlayerToLast(down);
                         }
 
+                        break;
+                    }
+
+                    if (i == _model.DataPlayer.Length - 1 && _model.DataPlayer.Length < 9)
+                    {
+                        AddPlayerToLast(player);
                         break;
                     }
                 }
